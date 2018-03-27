@@ -56,15 +56,15 @@ module.exports = class extends Generator {
 
     this.fs.writeJSON(this.destinationPath(`${toPath}/package.json`), pkg);
 
-    // 处理component.js
+    // 处理.gitignore
     this.fs.copyTpl(
-      this.templatePath('component.js'),
-      this.destinationPath(`${toPath}/${this.props.componentName}.js`),
+      this.templatePath('_gitignore'),
+      this.destinationPath(`${toPath}/.gitignore`),
       this.props
     );
 
     // 处理其他直接拷贝文件
-    const files = ['index.js', 'index.css', 'Readme.md', '.gitignore'];
+    const files = ['index.js', 'index.css', 'readme.md'];
 
     files.forEach(item => {
       this.fs.copyTpl(
